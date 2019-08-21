@@ -1,0 +1,26 @@
+{
+    "name": "baka",
+    "version": "1.0.1",
+    "description": "a bot.",
+    "main": "index.js",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/mozkomor05/Dong.git"
+    },
+    "keywords": [
+      "bot",
+      "discord",
+      "dong"
+    ],
+    "author": "David Moškoř & Ziriix",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/mozkomor05/Dong/issues"
+    },
+    "homepage": "https://github.com/mozkomor05/Dong#readme",
+    "dependencies": {
+      "discord.js": "^11.5.1",
+      "nekos.life": "^2.0.4",
+      "puppeteer": "^1.18.1"
+    }
+  }
