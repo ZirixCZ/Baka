@@ -7,6 +7,14 @@ var prefix = Auth.prefix;
 bot.on("ready", () => {
     console.log("ready, dont close IT AND GO FIND DA HOSTING");})
 
+    let helpStatus = false;
+
+        setInterval(() => {
+            if (helpStatus = !helpStatus)
+                bot.user.setActivity(".help for the list of Commands");
+            else
+                bot.user.setActivity("Created by Zirix & Zirix");
+        }, 5000);
 
 //#region No Dms    
 bot.on("message", message => {
@@ -24,6 +32,9 @@ bot.on("message", message => {
     // HI
     let sender = message.author;
     //COMMANDS
+    if(msg.startsWith(prefix + "HELP")){
+        message.channel.send("How can i help you dear \n `info` `commands`");
+    }
     if(msg.startsWith(prefix + "HELLO")){
         message.channel.send("Hello " + sender + " <3");
     }
