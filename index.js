@@ -258,7 +258,7 @@ bot.on("message", message => {
 
        
     //#region HELP
-    if(cont === prefix + "INFO"){
+    if(cont === prefix + "COMMANDS" || cont === prefix + "COMMAND"){
         let hembed = new Discord.RichEmbed()
         .setColor(colors.Cyan)
         .setThumbnail(bot.user.displayAvatarURL)
@@ -276,6 +276,60 @@ bot.on("message", message => {
     }
     //#endregion
     
+    //#region User Generating Random Number
+        if(cont === prefix + "RANDOMNUM" || cont === prefix + "RN"){
+            let ranges = ""
+            let afterranges = ""
+            let aftermin = ""
+            let min = args[0]
+            let max = args[1]
+            for(var i = 0; i < args.length; i++){
+                ranges += args[i];
+            }
+            for(var i = 1; i < args.length; i++){
+                aftermin += args[i];
+            }
+            for(var i = 2; i < args.length; i++){
+                afterranges += args[i];
+            }
+            if(!ranges){
+                return message.channel.send("Please write your range")
+            }
+            if(isNaN(min)){
+                return message.channel.send("Please use only numbers")
+            }
+            if(isNaN(max)){
+                return message.channel.send("Please use only numbers")
+            }
+            if(!aftermin){
+                return message.channel.send("Please write the second number")
+            }
+            if(afterranges){
+                return message.channel.send("Please write only two numbers")
+            }       
+            if(min > max){
+                return message.channel.send("I don't think it works like that... Did you mean: !Randomnum " + max + " " + min)
+            }
+            message.channel.send(Math.floor(Math.random() * (+max - +min + 1)) + +min);
+        }
+        //#endregion
+    
+    //#region Roll The Dice
+    if (cont === prefix + "ROLLTHEDICE"){
+        message.channel.send(Math.floor(Math.random() * 6) + 1);
+    }
+    //#endregion
+
+
+
+
+
+
+
+
+
+
+
 });
 //#endregion
 
