@@ -14,6 +14,12 @@ bot.on("message", message => {
     if(message.author.bot) return;
     if(message.channel.type === "dm") return;
     //NON SENSITIVE
+    if (talkedRecently.has(msg.author.id)) {
+        msg.channel.send("Wait two secs before sending commands again..." + msg.author); } 
+        else 
+    {talkedRecently.add(msg.author.id);
+    setTimeout(() => {talkedRecently.delete(msg.author.id);}, 120);
+    }
     let msg = message.content.toUpperCase();
     let splitmsgup = msg.split(" ");
     let cont = splitmsgup[0];
@@ -25,6 +31,9 @@ bot.on("message", message => {
     // HI
     let sender = message.author;
     //COMMANDS
+    if(cont === prefix + ("HELP") || cont === prefix + ("WELP")){
+        message.channel.send("there is your signpost, sir. \n `info` `commands`");
+    }
     if(msg.startsWith(prefix + "HELLO")){
         message.channel.send("Hello " + sender + " <3");
     }
