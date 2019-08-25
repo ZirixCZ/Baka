@@ -1,11 +1,10 @@
-'use strict';
 const Discord = require("discord.js");
 const Token = require("./auth.json");
-
-client.on("ready", () => {
+const bot = new Discord.Client({disableEveryone : true});
+bot.on("ready", () => {
     console.log("ready, dont close IT AND GO FIND DA HOSTING");})
 
-client.on("message", message => {
+bot.on("message", message => {
      if (message[0] != ".")
          return;
             //commands will go here theoretically :DDD
@@ -13,4 +12,3 @@ client.on("message", message => {
     
         
 });
-
