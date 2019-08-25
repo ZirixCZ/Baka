@@ -1,14 +1,21 @@
 const Discord = require("discord.js");
-const Token = require("./auth.json");
+const Auth = require("./auth.json");
 const bot = new Discord.Client({disableEveryone : true});
+
+var prefix = Auth.prefix;
+
 bot.on("ready", () => {
     console.log("ready, dont close IT AND GO FIND DA HOSTING");})
 
+
+//#region No Dms    
 bot.on("message", message => {
-     if (message[0] != ".")
-         return;
-            //commands will go here theoretically :DDD
-    
-    
+    const msg = message.content.toUpperCase();
+    if(msg === prefix + "HELLO"){
+        message.reply("Hello :)");
+    }
         
 });
+//#endregion
+
+bot.login(Auth.token);
