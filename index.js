@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const Auth = require("./auth.json");
+const colors = require("./colors.json");
 const bot = new Discord.Client({disableEveryone : true});
 
 var prefix = Auth.prefix;
@@ -146,6 +147,90 @@ bot.on("message", message => {
         }
         //#endregion
 
+        //#region Embed Server
+    if (cont === prefix + "SERVERINFO"){
+        let sEmbed = new Discord.RichEmbed()
+        .setColor(colors.Cyan)
+        .setTitle("Server Info")
+        .setThumbnail(message.guild.iconURL)
+        .setAuthor(`${message.guild.name}`, message.guild.iconURL)
+        .addField("**Server Name:**", `${message.guild.name}` , true)
+        .addField("**Server Owner:**", `${message.guild.owner}`, true)
+        .addField("**Member Count:**", `${message.guild.memberCount}`, true)
+        .addField("**Role Count:**", `${message.guild.roles.size}`, true)
+        .setFooter("Baka | Created By Zirix & Mystery", bot.user.displayAvatarURL)
+        message.channel.send({embed: sEmbed})
+    }
+    //#endregion
+
+        //#region Embed User
+        if (cont === prefix + 'USERINFO'){
+            let mentioned = message.mentions.members.first() || message.guild.members.get(args[0])  
+            let mentions = "";
+              
+                          
+            for(var i = 0; i < args.length; i++){
+                mentions += args[i];
+            }            
+            if(mentions){
+                let mentionedusername = message.guild.members.find(x => x.user.username.toLowerCase() === args[0].toLowerCase())
+                if(!mentioned && !mentionedusername){
+                    return message.channel.send("I'm sorry, i couldn't find who you are trying to check");
+                }
+    
+                if(mentionedusername){
+                    let uEmbed = new Discord.RichEmbed()
+                    .setColor(colors.Cyan)
+                    .setTitle(`Info about ${mentionedusername.user.username}`)
+                    .setThumbnail(mentionedusername.user.displayAvatarURL)
+                    .setAuthor(`${mentionedusername.user.username}`, mentionedusername.user.displayAvatarURL)
+                    .addField("**Username:**", `${mentionedusername}`, true)
+                    .addField("**Discriminator:**", `${mentionedusername.user.discriminator}`, true)                
+                    .addField("**ID:**", `${mentionedusername.id}`, true)
+                    .addField("**Status:**", `${mentionedusername.presence.status}`, true)
+                    .addField("**Created At:**", `${mentionedusername.user.createdAt.toDateString() +", " + mentionedusername.user.createdAt.toLocaleString()}`, true)
+                    .setFooter(`${bot.user.username} | Created By Zirix & Mystery`, bot.user.displayAvatarURL)
+                    message.channel.send({embed: uEmbed})
+                    return;
+                }
+            }
+                                  
+            if(!mentioned){
+                let uEmbed = new Discord.RichEmbed()
+                .setColor(colors.Cyan)
+                .setTitle(`Info about ${message.author.username}`)
+                .setThumbnail(message.author.displayAvatarURL)
+                .setAuthor(`${message.author.username}`, message.author.displayAvatarURL)
+                .addField("**Username:**", `${message.author.username}`, true)
+                .addField("**Discriminator:**", `${message.author.discriminator}`, true)
+                .addField("**ID:**", `${message.author.id}`, true)
+                .addField("**Status:**", `${message.author.presence.status}`, true)
+                .addField("**Created At:**", `${message.author.createdAt.toDateString() +", "+ message.author.createdAt.toLocaleString()}`, true)
+                .setFooter(`${bot.user.username} | Created By Zirix & Mystery`, bot.user.displayAvatarURL)
+                message.channel.send({embed: uEmbed}) 
+                return;  
+            }
+    
+            if(mentioned){
+                let uEmbed = new Discord.RichEmbed()
+                .setColor(colors.Cyan)
+                .setTitle(`Info about ${mentioned.user.username}`)
+                .setThumbnail(mentioned.user.displayAvatarURL)
+                .setAuthor(`${mentioned.user.username}`, mentioned.user.displayAvatarURL)
+                .addField("**Username:**", `${mentioned.user.username}`, true)
+                .addField("**Discriminator:**", `${mentioned.user.discriminator}`, true)
+                .addField("**ID:**", `${mentioned.id}`, true)
+                .addField("**Status:**", `${mentioned.user.presence.status}`, true)
+                .addField("**Created At:**", `${mentioned.user.createdAt.toDateString() +", "+ mentioned.user.createdAt.toLocaleString()}`, true)
+                .setFooter(`${bot.user.username} | Created By Zirix & Mystery`, bot.user.displayAvatarURL)
+                message.channel.send({embed: uEmbed})   
+                return;
+            } 
+            
+            
+                   
+        }
+        //#endregion
 });
 //#endregion
 
