@@ -14,12 +14,13 @@ bot.on("message", message => {
     if(message.author.bot) return;
     if(message.channel.type === "dm") return;
     //NON SENSITIVE
-    if (talkedRecently.has(msg.author.id)) {
-        msg.channel.send("Wait two secs before sending commands again..." + msg.author); } 
+   /*if (talkedRecently.has(message.author.id)) {
+        message.channel.send("Wait two secs before sending commands again..." + message.author); } 
         else 
-    {talkedRecently.add(msg.author.id);
-    setTimeout(() => {talkedRecently.delete(msg.author.id);}, 120);
-    }
+    {talkedRecently.add(message.author.id);
+    setTimeout(() => {talkedRecently.delete(message.author.id);}, 2000);
+    return;
+    }*/
     let msg = message.content.toUpperCase();
     let splitmsgup = msg.split(" ");
     let cont = splitmsgup[0];
