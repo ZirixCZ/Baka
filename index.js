@@ -13,7 +13,7 @@ bot.on("ready", () => {
             if (helpStatus = !helpStatus)
                 bot.user.setActivity(".help for the list of Commands");
             else
-                bot.user.setActivity("Created by Zirix & Zirix");
+                bot.user.setActivity("Created by Zirix & Mystery");
         }, 5000);
 
 //#region No Dms    
