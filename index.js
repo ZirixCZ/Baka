@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const Auth = require("./auth.json");
 const colors = require("./colors.json");
+const talkedRecently = new Set();
 const bot = new Discord.Client({disableEveryone : true});
 
 var prefix = Auth.prefix;
