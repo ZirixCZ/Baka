@@ -38,7 +38,6 @@ bot.on("message", message => {
         else
             client.user.setActivity("Created by Zirix & Mystery");
     }, 5000);
-    });
     let sender = message.author;
     //COMMANDS
     if(cont === prefix + ("HELP") || cont === prefix + ("WELP")){
