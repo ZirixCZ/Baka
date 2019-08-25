@@ -4,6 +4,14 @@ const colors = require("./colors.json");
 const talkedRecently = new Set();
 const bot = new Discord.Client({disableEveryone : true});
 
+let helpStatus = false;
+    setInterval(() => {
+        if (helpStatus = !helpStatus)
+            bot.user.setActivity(".help for the list of commands");
+        else
+            bot.user.setActivity("Created by Zirix & Mystery");
+    }, 15000);
+
 var prefix = Auth.prefix;
 
     bot.on("ready", () => {
@@ -31,21 +39,20 @@ bot.on("message", message => {
     let cmd = messageArray[0];
     let args = messageArray.slice(1);
     // HI
-       let helpStatus = false;
-    setInterval(() => {
-        if (helpStatus = !helpStatus)
-            bot.user.setActivity(".help for the list of commands");
-        else
-            bot.user.setActivity("Created by Zirix & Mystery");
-    }, 5000);
     let sender = message.author;
     //COMMANDS
+
+    //#region Help
     if(cont === prefix + ("HELP") || cont === prefix + ("WELP")){
         message.channel.send("there is your signpost, sir. \n `info` `commands`");
     }
+    //#endregion
+
+    //#region Hello
     if(msg.startsWith(prefix + "HELLO")){
         message.channel.send("Hello " + sender + " <3");
     }
+    //#endregion
 
     //#region Coinflip
     if(cont === prefix + "COINFLIP" || cont === prefix + "CF"){
@@ -161,11 +168,10 @@ bot.on("message", message => {
     
             // We want to make sure we call the function whenever the purge command is run.
             purge(); // Make sure this is inside the if(msg.startsWith)
-            message.channel.send("I cleaned this messy chat just for you " + sender + " <3");
         }
         //#endregion
 
-        //#region Embed Server
+    //#region Embed Server
     if (cont === prefix + "SERVERINFO"){
         let sEmbed = new Discord.RichEmbed()
         .setColor(colors.Cyan)
@@ -181,7 +187,7 @@ bot.on("message", message => {
     }
     //#endregion
 
-        //#region Embed User
+    //#region Embed User
         if (cont === prefix + 'USERINFO'){
             let mentioned = message.mentions.members.first() || message.guild.members.get(args[0])  
             let mentions = "";
@@ -249,6 +255,27 @@ bot.on("message", message => {
                    
         }
         //#endregion
+
+       
+    //#region HELP
+    if(cont === prefix + "INFO"){
+        let hembed = new Discord.RichEmbed()
+        .setColor(colors.Cyan)
+        .setThumbnail(bot.user.displayAvatarURL)
+        .setDescription("**Note: All the commands are NOT cap sensitive**")
+        .addField("**.Ping**", "Try it")
+        .addField("**.Hello**", "Hey")
+        .addField("**.Coinflip**", "Try out your luck")
+        .addField("**.Purge**", "A command that only members with the right permissions can use to delete a huge amount of commands")
+        .addField("**.Randomnum/Rn**", "Get a random number between the range you write\nExample: `.rn 1 50`\nSecond Example: `.Randomnum 1 50`")
+        .addField("**.Serverinfo**", "Check some information about the server")
+        .addField("**.Userinfo**", "Check some information about a member in the server, or check yours. \nTo check yours do " + "`.Userinfo` \nand to check some else's information do " + "`.Userinfo <@User>`\n**Note: You don't have to ping the person**")
+        .addField("**.Rollthedice**", "Roll the dice and get a random number between 1 - 6")
+        .addField("**.Rps r/p/s**", "A game of rock paper scissors, start the command with `.Rps` and then choose Rock/r, Paper/r or Scissors/s \nExample: `.Rps Rock`\nSecond Example: `.Rps R`")
+        message.channel.send(hembed);
+    }
+    //#endregion
+    
 });
 //#endregion
 
