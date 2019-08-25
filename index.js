@@ -31,12 +31,12 @@ bot.on("message", message => {
     let cmd = messageArray[0];
     let args = messageArray.slice(1);
     // HI
-     let helpStatus = false;
+       let helpStatus = false;
     setInterval(() => {
         if (helpStatus = !helpStatus)
-            client.user.setActivity(".help for the list of commands");
+            bot.user.setActivity(".help for the list of commands");
         else
-            client.user.setActivity("Created by Zirix & Mystery");
+            bot.user.setActivity("Created by Zirix & Mystery");
     }, 5000);
     let sender = message.author;
     //COMMANDS
