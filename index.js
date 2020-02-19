@@ -9,8 +9,14 @@ let helpStatus = false;
     setInterval(() => {
         if (helpStatus = !helpStatus)
             bot.user.setActivity(".help for the list of commands");
-        else
+     else
+        var creator = Math.floor(Math.random() * (100 - 1 + 1)) + 1;
+        if(creator <= 50){
             bot.user.setActivity("Created by Zirix & Mystery");
+        }
+        if(creator > 50){
+            bot.user.setActivity("Created by Mystery & Zirix");
+        }
     }, 15000);
 
 
