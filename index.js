@@ -178,7 +178,7 @@ bot.on("message", message => {
         //#endregion
 
     //#region Embed Server
-    if (cont === prefix + ("SERVERINFO") || cont === prefix + ("INFO")){
+     if (cont === prefix + ("SERVERINFO") || cont === prefix + ("INFO") || cont === prefix + ("SERVER")){
         let sEmbed = new Discord.RichEmbed()
         .setColor(colors.Cyan)
         .setTitle("Server Info")
