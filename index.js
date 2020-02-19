@@ -3,8 +3,9 @@ const Auth = require("./auth.json");
 const colors = require("./colors.json");
 const talkedRecently = new Set();
 const bot = new Discord.Client({disableEveryone : true});
-
+var prefix = Auth.prefix;
 let helpStatus = false;
+
     setInterval(() => {
         if (helpStatus = !helpStatus)
             bot.user.setActivity(".help for the list of commands");
@@ -12,7 +13,6 @@ let helpStatus = false;
             bot.user.setActivity("Created by Zirix & Mystery");
     }, 15000);
 
-var prefix = Auth.prefix;
 
     bot.on("ready", () => {
         console.log("ready, dont close IT AND GO FIND DA HOSTING");})
@@ -49,7 +49,7 @@ bot.on("message", message => {
     //#endregion
 
     //#region Hello
-    if(msg.startsWith(prefix + "HELLO")){
+    if(cont === prefix + ("HELLO") || cont === prefix + ("HEY") || cont === prefix + ("HELLO BAKA") || cont === prefix + ("HEY BAKA") || cont === prefix + ("YO") || cont === prefix + ("YO BAKA")){
         message.channel.send("Hello " + sender + " <3");
     }
     //#endregion
@@ -266,7 +266,7 @@ bot.on("message", message => {
         .addField("**.Ping**", "Try it")
         .addField("**.Hello**", "Hey")
         .addField("**.Coinflip**", "Try out your luck")
-        .addField("**.Purge**", "A command that only members with the right permissions can use to delete a huge amount of commands")
+        .addField("**.Purge**", "A command that only members with the right permissions can use to delete a huge amount of text")
         .addField("**.Randomnum/Rn**", "Get a random number between the range you write\nExample: `.rn 1 50`\nSecond Example: `.Randomnum 1 50`")
         .addField("**.Serverinfo**", "Check some information about the server")
         .addField("**.Userinfo**", "Check some information about a member in the server, or check yours. \nTo check yours do " + "`.Userinfo` \nand to check some else's information do " + "`.Userinfo <@User>`\n**Note: You don't have to ping the person**")
