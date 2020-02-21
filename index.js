@@ -89,7 +89,7 @@ bot.on("message", message => {
     //#endregion
 
     //#region RPS Rock Paper Scissors
-        if(msg.startsWith(prefix + 'RPS')){
+       if(msg.startsWith(prefix + 'RPS')){
             let choice = "";
             for(var i = 0; i < args.length; i++){
                 choice += argsup[i];
@@ -105,15 +105,24 @@ bot.on("message", message => {
                 let Botpick = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
                 // 1 rock 2 paper 3 scissors
                 if(Botpick == 1){
-                    message.channel.send('You chose rock and i chose rock too!\nTie!');
+                    let sEmbed = new Discord.RichEmbed()
+                    .addField ("You chose rock and i chose rock too!", "\nTie!")
+                    .setColor(colors.Yellow)
+                    message.channel.send({embed: sEmbed})
                 }
     
                 if(Botpick == 2){
-                    message.channel.send('You chose rock and i chose paper!\nI won!');
+                    let sEmbed = new Discord.RichEmbed()
+                    .addField ("You chose rock and i chose paper!","\nI won!")
+                    .setColor(colors.Red)
+                    message.channel.send({embed: sEmbed})
                 }
     
                 if(Botpick == 3){
-                    message.channel.send('You chose rock and i chose scissors!\nYou won!');
+                    let sEmbed = new Discord.RichEmbed()
+                    .addField ("You chose rock and i chose scissors!","\nYou won!")
+                    .setColor(colors.Green)
+                    message.channel.send({embed: sEmbed})
                 }
             }
             // PAPER
@@ -121,15 +130,24 @@ bot.on("message", message => {
                 let Botpick = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
                 // 1 rock 2 paper 3 scissors
                 if(Botpick == 1){
-                message.channel.send('You chose paper and i chose rock!\nYou won!');
+                let sEmbed = new Discord.RichEmbed()
+                .addField ("You chose paper and i chose rock!","\nYou won!")
+                .setColor(colors.Green)
+                message.channel.send({embed: sEmbed})
                 }
             
                 if(Botpick == 2){
-                    message.channel.send('You chose paper and i chose paper too!\nTie!');
+                    let sEmbed = new Discord.RichEmbed()
+                    .addField ("You chose paper and i chose paper too!","\nTie!")
+                    .setColor(colors.Yellow)
+                    message.channel.send({embed: sEmbed})
                 }
             
                 if(Botpick == 3){
-                    message.channel.send('You chose paper and i chose scissors!\nI won!');
+                    let sEmbed = new Discord.RichEmbed()
+                    .addField ("You chose paper and i chose scissors!","\nI won!")
+                    .setColor(colors.Red)
+                    message.channel.send({embed: sEmbed})
                 }
             }
             // SCISSORS
@@ -137,15 +155,24 @@ bot.on("message", message => {
                 let Botpick = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
                 // 1 rock 2 paper 3 sciccors
                 if(Botpick == 1){
-                    message.channel.send('You chose scissors and i chose rock!\nI won');
+                    let sEmbed = new Discord.RichEmbed()
+                    .addField ("You chose scissors and i chose rock!","\nI won")
+                    .setColor(colors.Red)
+                    message.channel.send({embed: sEmbed})
                     }
                 
                     if(Botpick == 2){
-                        message.channel.send('You chose scissors and i chose paper\nYou won');
+                        let sEmbed = new Discord.RichEmbed()
+                        .addField ("You chose scissors and i chose paper","\nYou won")
+                        .setColor(colors.Green)
+                        message.channel.send({embed: sEmbed})
                     }
                 
                     if(Botpick == 3){
-                        message.channel.send('You chose scissors and i chose scissors too!\nTie');
+                        let sEmbed = new Discord.RichEmbed()
+                        .addField ("You chose scissors and i chose scissors too!","\nTie")
+                        .setColor(colors.Yellow)
+                        message.channel.send({embed: sEmbed})
                     }
             }
         }
