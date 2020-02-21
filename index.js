@@ -49,8 +49,16 @@ bot.on("message", message => {
     //COMMANDS
 
     //#region Help
-    if(cont === prefix + ("HELP") || cont === prefix + ("WELP")){
-        message.channel.send("there is your signpost, sir. \n `info` `commands`");
+       if(cont === prefix + ("HELP") || cont === prefix + ("WELP")){
+        let sEmbed = new Discord.RichEmbed()
+        .setColor(colors.Cyan)
+        .setTitle("Help")
+        .addField("**The prefix is .**", "use it in front of every command you use.")
+        .addField("**commands**", "shows the list of commands what you can use.")
+        .addField("**info**", "displays the info about server.")
+        .setThumbnail(message.guild.iconURL)
+        .setFooter("Baka | Created By Zirix & Mystery", bot.user.displayAvatarURL)
+        message.channel.send({embed: sEmbed})
     }
     //#endregion
 
